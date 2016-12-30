@@ -1,0 +1,7 @@
+Tasks
+
+*1 get live photos displaying on screen for a few seconds
+*2 setup an onboarding sequence
+	*a how long you want your photos to show on screen?
+	*b A screen of photos that are all live photos, you can choose to leaves ones out.
+	*c pull the live photos from a specific album that you setup
