@@ -26,6 +26,7 @@ class LivePhotoStore: NSObject {
     
     var allPhotos: PHFetchResult<PHAsset>!
     var livePhotos: [PHAsset]?
+    var currentPhotoIndex: Int = 0
     var targetSize: CGSize?
     var smartAlbums: PHFetchResult<PHAssetCollection>!
     var userCollections: PHFetchResult<PHCollection>!
@@ -60,8 +61,9 @@ class LivePhotoStore: NSObject {
         //I think for now i'm just going to overwrite whats there
         //TODO: in the future I should probably check for something there first
         livePhotos = onlyLivePhotos
-        
-
+        if let livePhotos = livePhotos {
+            currentPhotoIndex = livePhotos.count - 1
+        }
 
     }
     
@@ -111,6 +113,15 @@ class LivePhotoStore: NSObject {
                 })
             }
         }
+    }
+    
+    public func getNextPhoto(completionHandler: @escaping ((PHLivePhoto) -> Void)) -> Void {
+        guard let livePhotos = livePhotos else { return }
+        
+        
+        getLivePhoto(for: currentPhotoIndex, completionHandler:completionHandler)
+        currentPhotoIndex -= 1
+        
     }
 
 }

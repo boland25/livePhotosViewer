@@ -21,6 +21,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        livePhotoView.delegate = self
         photoStore.configure(targetSize: targetSize)
         photoStore.filter()
         startTheShow()
@@ -35,7 +36,7 @@ final class ViewController: UIViewController {
     
     func startTheShow() -> Void {
         //I call get resource here and display it in the player
-        photoStore.getLivePhoto(for: 1) { (livePhoto) in
+        photoStore.getNextPhoto{ (livePhoto) in
             // Now that we have the Live Photo, show it.
             self.imageView.isHidden = true
             self.livePhotoView.livePhoto = livePhoto
@@ -52,5 +53,21 @@ final class ViewController: UIViewController {
     }
 
 
+}
+
+extension ViewController: PHLivePhotoViewDelegate {
+    
+    func livePhotoView(_ livePhotoView: PHLivePhotoView, willBeginPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle) {
+        print("Beginning playback")
+    }
+    
+    
+    func livePhotoView(_ livePhotoView: PHLivePhotoView, didEndPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle) {
+        print("did end playing")
+        //this will need to trigger the next one
+        startTheShow()
+    }
+
+    
 }
 
