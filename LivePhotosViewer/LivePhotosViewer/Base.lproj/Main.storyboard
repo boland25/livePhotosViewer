@@ -28,27 +28,44 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZP-2i-a1c">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Nql-Fd-MTA" secondAttribute="trailing" id="4ha-Rs-Iir"/>
+                            <constraint firstAttribute="trailing" secondItem="ZZP-2i-a1c" secondAttribute="trailing" id="4ja-2Y-DJI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dL5-sG-meW" secondAttribute="bottom" id="7rJ-kj-WAC"/>
                             <constraint firstAttribute="trailing" secondItem="dL5-sG-meW" secondAttribute="trailing" id="7xp-KH-8Jf"/>
                             <constraint firstItem="dL5-sG-meW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="E8S-gI-SCZ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZZP-2i-a1c" secondAttribute="bottom" id="K99-hX-whp"/>
                             <constraint firstItem="dL5-sG-meW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="X7P-Hv-NQZ"/>
+                            <constraint firstItem="ZZP-2i-a1c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YeE-Gz-pRw"/>
                             <constraint firstItem="Nql-Fd-MTA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="a6Y-YY-vZa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nql-Fd-MTA" secondAttribute="bottom" id="cjF-dp-gjC"/>
                             <constraint firstItem="Nql-Fd-MTA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iAD-Oj-ZfV"/>
+                            <constraint firstItem="ZZP-2i-a1c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xnZ-PS-3Qa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Nql-Fd-MTA" id="DOU-tb-IJW"/>
                         <outlet property="livePhotoView" destination="dL5-sG-meW" id="2kq-n9-dAb"/>
+                        <outlet property="videoContainer" destination="ZZP-2i-a1c" id="ZGp-j4-LYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="117.39130434782609"/>
+            <point key="canvasLocation" x="-180" y="83.208395802098963"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="otU-I7-I9V">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="u5p-TA-aBU" customClass="MainViewController" customModule="LivePhotosViewer" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DcS-3H-Kf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="117"/>
         </scene>
     </scenes>
 </document>

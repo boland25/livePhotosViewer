@@ -16,8 +16,11 @@ final class ViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var livePhotoView: PHLivePhotoView!
+    @IBOutlet weak var videoContainer: UIView!
     
     let photoStore: LivePhotoStore = LivePhotoStore()
+    var videoPlayer: AVPlayer?
+    var playerLayer: AVPlayerLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +39,27 @@ final class ViewController: UIViewController {
     
     func startTheShow() -> Void {
         //I call get resource here and display it in the player
-        photoStore.getNextPhoto{ (livePhoto) in
+        photoStore.getNextPhoto{ (livePhotoURL) in
             // Now that we have the Live Photo, show it.
-            self.imageView.isHidden = true
-            self.livePhotoView.livePhoto = livePhoto
-            self.livePhotoView.startPlayback(with: .full)
+            let playerItem = AVPlayerItem(url: livePhotoURL)
+            if let player = self.videoPlayer {
+                //if it exists already just replace the item
+                player.replaceCurrentItem(with: playerItem)
+            } else {
+                self.videoPlayer = AVPlayer(playerItem: playerItem)
+                self.playerLayer = AVPlayerLayer(player: self.videoPlayer)
+                if let playaLayer = self.playerLayer {
+                    playaLayer.frame = self.view.bounds
+                    self.videoContainer.layer.addSublayer(playaLayer)
+                    print("slow play? \(playerItem.canPlaySlowForward)")
+                    self.videoPlayer?.play()
+                    self.videoPlayer?.rate = 0.3
+                }
+            }
+            //TODO: remove the old video data at the old url, then save the new one
+            
+            
+            
         }
     }
     

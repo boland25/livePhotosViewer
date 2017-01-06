@@ -92,7 +92,7 @@ class LivePhotoStore: NSObject {
         })
     }
     
-    public func getResource(for index: Int) -> Void {
+    public func getResource(for index: Int, completionHandler: @escaping ((URL) -> Void)) -> Void {
         guard  let onlyLivePhotos = livePhotos else { return }
         
         let asset = onlyLivePhotos[index]
@@ -101,27 +101,30 @@ class LivePhotoStore: NSObject {
         let assetResources = PHAssetResource.assetResources(for: asset)
         
         assetResources.forEach { (resource) in
+            //Paired Video is a live photo asset
             if resource.type == .pairedVideo {
-                resourceMan.requestData(for: resource, options: nil, dataReceivedHandler: { (data) in
-                    print("here is the data that I need to do something with \(data)")
-                    //the asset itself should have a PHLIvePHotoView and I should be able to control it somehow
-                    //TODO: **START HERE GREG*** I can probably just play this data in an AVPLauer and call it a day
-                }, completionHandler: { (error) in
-                    if let error = error {
-                        print("error \(error)")
-                    }
+                let urlString = LivePhotoStore.directoryPath(itemName: resource.originalFilename)
+                let url = URL(fileURLWithPath: urlString)
+                resourceMan.writeData(for: resource, toFile: url, options: nil, completionHandler: { (error) in
+                    print("completed \(urlString)")
+                    completionHandler(url)
                 })
             }
         }
     }
     
-    public func getNextPhoto(completionHandler: @escaping ((PHLivePhoto) -> Void)) -> Void {
-        guard let livePhotos = livePhotos else { return }
+    public func getNextPhoto(completionHandler: @escaping ((URL) -> Void)) -> Void {
+        //check to see if there are any photos otherwise dont do anything
+        guard let _ = livePhotos else { return }
         
-        
-        getLivePhoto(for: currentPhotoIndex, completionHandler:completionHandler)
+        getResource(for: currentPhotoIndex, completionHandler: completionHandler)
         currentPhotoIndex -= 1
         
+    }
+    
+    static func directoryPath(itemName: String) -> String {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        return documentsPath + "/" + itemName
     }
 
 }

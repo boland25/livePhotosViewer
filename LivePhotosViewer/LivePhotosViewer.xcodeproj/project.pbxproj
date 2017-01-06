@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A3F1AD41E203A2600FC7968 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3F1AD31E203A2600FC7968 /* MainViewController.swift */; };
 		3A6942431E11E40800E52EA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6942421E11E40800E52EA5 /* AppDelegate.swift */; };
 		3A6942451E11E40800E52EA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6942441E11E40800E52EA5 /* ViewController.swift */; };
 		3A6942481E11E40800E52EA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6942461E11E40800E52EA5 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A3F1AD31E203A2600FC7968 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3A69423F1E11E40800E52EA5 /* LivePhotosViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivePhotosViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6942421E11E40800E52EA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = LivePhotosViewer/AppDelegate.swift; sourceTree = "<group>"; };
 		3A6942441E11E40800E52EA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				3A6942491E11E40800E52EA5 /* Assets.xcassets */,
 				3A69424B1E11E40800E52EA5 /* LaunchScreen.storyboard */,
 				3A69424E1E11E40800E52EA5 /* Info.plist */,
+				3A3F1AD31E203A2600FC7968 /* MainViewController.swift */,
 			);
 			path = LivePhotosViewer;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				3AB201191E1704CE00692C26 /* LivePhotoAutomator.swift in Sources */,
 				3A6942431E11E40800E52EA5 /* AppDelegate.swift in Sources */,
 				3AB201171E16193D00692C26 /* LivePhotoStore.swift in Sources */,
+				3A3F1AD41E203A2600FC7968 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
