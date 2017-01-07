@@ -42,6 +42,9 @@ final class ViewController: UIViewController {
         photoStore.getNextPhoto{ (livePhotoURL) in
             // Now that we have the Live Photo, show it.
             let playerItem = AVPlayerItem(url: livePhotoURL)
+            NotificationCenter.default.addObserver(self, selector: ViewController.itemDidFinishPlaying, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+            // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
+           // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
             if let player = self.videoPlayer {
                 //if it exists already just replace the item
                 player.replaceCurrentItem(with: playerItem)
