@@ -42,12 +42,12 @@ final class ViewController: UIViewController {
         photoStore.getNextPhoto{ (livePhotoURL) in
             // Now that we have the Live Photo, show it.
             let playerItem = AVPlayerItem(url: livePhotoURL)
-            NotificationCenter.default.addObserver(self, selector: ViewController.itemDidFinishPlaying, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-            // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
-           // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
+            NotificationCenter.default.addObserver(self, selector: #selector(ViewController.itemDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
             if let player = self.videoPlayer {
                 //if it exists already just replace the item
                 player.replaceCurrentItem(with: playerItem)
+                player.play()
+                player.rate = 0.3
             } else {
                 self.videoPlayer = AVPlayer(playerItem: playerItem)
                 self.playerLayer = AVPlayerLayer(player: self.videoPlayer)
@@ -74,7 +74,14 @@ final class ViewController: UIViewController {
                       height: imageView.bounds.height * scale)
     }
 
+}
 
+extension ViewController {
+    
+    func itemDidFinishPlaying(note: Notification) -> Void {
+            print("did finish so queue up the next one")
+        startTheShow()
+    }
 }
 
 extension ViewController: PHLivePhotoViewDelegate {

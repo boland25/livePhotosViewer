@@ -92,6 +92,11 @@ class LivePhotoStore: NSObject {
         })
     }
     
+    /**
+      - Get Resource
+     - index: Int 
+     - completionHandler: (URL)-> Void
+    */
     public func getResource(for index: Int, completionHandler: @escaping ((URL) -> Void)) -> Void {
         guard  let onlyLivePhotos = livePhotos else { return }
         
@@ -113,6 +118,7 @@ class LivePhotoStore: NSObject {
         }
     }
     
+    //provides a local URL of where the asset is located on the device
     public func getNextPhoto(completionHandler: @escaping ((URL) -> Void)) -> Void {
         //check to see if there are any photos otherwise dont do anything
         guard let _ = livePhotos else { return }
