@@ -60,7 +60,8 @@ final class ViewController: UIViewController {
                     playaLayer.frame = self.view.bounds
                     self.videoContainer.layer.addSublayer(playaLayer)
                     print("slow play? \(playerItem.canPlaySlowForward)")
-                  //  playaLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                    //NOTE: commenting this out becaue i'm not sure if like the fill or fit better
+                    //  playaLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
                     self.videoPlayer?.play()
                     self.videoPlayer?.rate = 0.3
                 }
@@ -89,13 +90,10 @@ extension ViewController {
     }
     
     func statusBarDidChange(note: Notification) -> Void {
-        print("STATUS BAR CHANGE")
-        //UIInterfaceOrientation orient = [notification.userInfo[UIApplicationStatusBarOrientationUserInfoKey] integerValue];
-        if let orientationDirection = note.userInfo?[UIApplicationStatusBarFrameUserInfoKey] {
-            print("ORIENTATION \(orientationDirection)")
-        }
+        //Handle the orientation change, re-size the video using the new bounds
         if let playaLayer = self.playerLayer {
             playaLayer.frame = self.view.bounds
+            //NOTE: commented this out because i'm not sure if i like the fill or fit aspect better
             //playaLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         }
 
