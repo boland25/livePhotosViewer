@@ -24,6 +24,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerNotifications()
         livePhotoView.delegate = self
         photoStore.configure(targetSize: targetSize)
         photoStore.filter()
@@ -35,6 +36,10 @@ final class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func registerNotifications() -> Void {
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.statusBarDidChange), name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil)
     }
     
     func startTheShow() -> Void {
@@ -55,12 +60,12 @@ final class ViewController: UIViewController {
                     playaLayer.frame = self.view.bounds
                     self.videoContainer.layer.addSublayer(playaLayer)
                     print("slow play? \(playerItem.canPlaySlowForward)")
+                  //  playaLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
                     self.videoPlayer?.play()
                     self.videoPlayer?.rate = 0.3
                 }
             }
             //TODO: remove the old video data at the old url, then save the new one
-            
             
             
         }
@@ -81,6 +86,20 @@ extension ViewController {
     func itemDidFinishPlaying(note: Notification) -> Void {
             print("did finish so queue up the next one")
         startTheShow()
+    }
+    
+    func statusBarDidChange(note: Notification) -> Void {
+        print("STATUS BAR CHANGE")
+        //UIInterfaceOrientation orient = [notification.userInfo[UIApplicationStatusBarOrientationUserInfoKey] integerValue];
+        if let orientationDirection = note.userInfo?[UIApplicationStatusBarFrameUserInfoKey] {
+            print("ORIENTATION \(orientationDirection)")
+        }
+        if let playaLayer = self.playerLayer {
+            playaLayer.frame = self.view.bounds
+            //playaLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        }
+
+        videoContainer.setNeedsUpdateConstraints()
     }
 }
 

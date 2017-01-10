@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,19 +18,19 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nql-Fd-MTA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL5-sG-meW" customClass="PHLivePhotoView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZP-2i-a1c">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,12 +40,16 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dL5-sG-meW" secondAttribute="bottom" id="7rJ-kj-WAC"/>
                             <constraint firstAttribute="trailing" secondItem="dL5-sG-meW" secondAttribute="trailing" id="7xp-KH-8Jf"/>
                             <constraint firstItem="dL5-sG-meW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="E8S-gI-SCZ"/>
+                            <constraint firstItem="ZZP-2i-a1c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FEl-MX-Xva"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZZP-2i-a1c" secondAttribute="bottom" id="K99-hX-whp"/>
                             <constraint firstItem="dL5-sG-meW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="X7P-Hv-NQZ"/>
+                            <constraint firstItem="ZZP-2i-a1c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XSS-iC-ztc"/>
                             <constraint firstItem="ZZP-2i-a1c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YeE-Gz-pRw"/>
                             <constraint firstItem="Nql-Fd-MTA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="a6Y-YY-vZa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZZP-2i-a1c" secondAttribute="bottom" id="cc4-Zl-Swx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nql-Fd-MTA" secondAttribute="bottom" id="cjF-dp-gjC"/>
                             <constraint firstItem="Nql-Fd-MTA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iAD-Oj-ZfV"/>
+                            <constraint firstAttribute="trailing" secondItem="ZZP-2i-a1c" secondAttribute="trailing" id="qB0-o7-zkk"/>
                             <constraint firstItem="ZZP-2i-a1c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xnZ-PS-3Qa"/>
                         </constraints>
                     </view>
